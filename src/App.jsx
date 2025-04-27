@@ -65,6 +65,9 @@ const App = ({
     <div className="App">
       {loading.loading && <Loader>Loading model... {(loading.progress * 100).toFixed(2)}%</Loader>}
       <div className="header">
+        <div className="header-nav">
+          <a href="landing.html" className="back-link">← Back to Models</a>
+        </div>
         <h1>📷 {title} Live Detection App</h1>
         <p>
         Model powered by <code>repzo.com</code>

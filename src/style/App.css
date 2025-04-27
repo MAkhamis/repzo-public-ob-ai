@@ -71,3 +71,18 @@ button:hover {
   background-color: white;
   border: 2px solid black;
 }
+
+.header-nav {
+  text-align: left;
+  padding: 10px 20px;
+}
+
+.back-link {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
