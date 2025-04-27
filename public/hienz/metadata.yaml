@@ -1,0 +1,20 @@
+description: Ultralytics YOLO11m model trained on /content/datasets/detect/detect.yaml
+author: Ultralytics
+date: '2025-04-08T11:13:35.814122'
+version: 8.3.104
+license: AGPL-3.0 License (https://ultralytics.com/license)
+docs: https://docs.ultralytics.com
+stride: 32
+task: detect
+batch: 1
+imgsz:
+- 1280
+- 1280
+names:
+  0: inverted
+  1: standard
+args:
+  batch: 1
+  half: false
+  int8: false
+  nms: false

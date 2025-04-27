@@ -1,5 +1,5 @@
 // renderBox.js
-import labels from "./labels.json";
+
 
 /**
  * Render prediction boxes
@@ -14,7 +14,8 @@ export const renderBoxes = (
   boxes_data,
   scores_data,
   classes_data,
-  ratios
+  ratios,
+  labels ,
 ) => {
   const ctx = canvasRef.getContext("2d");
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // clean canvas

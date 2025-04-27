@@ -6,7 +6,13 @@ import ButtonHandler from "./components/btn-handler";
 import { detect, detectVideo } from "./utils/detect";
 import "./style/App.css";
 
-const App = () => {
+
+const App = ({
+  title ,
+  modelFolder,
+  modelName,
+  labels,
+}) => {
   const [loading, setLoading] = useState({ loading: true, progress: 0 }); // loading state
   const [model, setModel] = useState({
     net: null,
@@ -20,7 +26,6 @@ const App = () => {
   const canvasRef = useRef(null);
 
   // model configs
-  const modelName = "yolov8n";
 
   useEffect(() => {
     tf.ready().then(async () => {
@@ -33,8 +38,8 @@ const App = () => {
       basePath = basePath.replace(/\/$/, '');
 
 
-      const yolov8 = await tf.loadGraphModel(
-            `${basePath}/${modelName}_web_model/model.json`,
+      const model = await tf.loadGraphModel(
+            `${basePath}/${modelFolder}/model.json`,
         {
           onProgress: (fractions) => {
             setLoading({ loading: true, progress: fractions }); // set loading fractions
@@ -43,13 +48,13 @@ const App = () => {
       ); // load model
 
       // warming up model
-      const dummyInput = tf.ones(yolov8.inputs[0].shape);
-      const warmupResults = yolov8.execute(dummyInput);
+      const dummyInput = tf.ones(model.inputs[0].shape);
+      const warmupResults = model.execute(dummyInput);
 
       setLoading({ loading: false, progress: 1 });
       setModel({
-        net: yolov8,
-        inputShape: yolov8.inputs[0].shape,
+        net: model,
+        inputShape: model.inputs[0].shape,
       }); // set model & input shape
 
       tf.dispose([warmupResults, dummyInput]); // cleanup memory
@@ -60,9 +65,9 @@ const App = () => {
     <div className="App">
       {loading.loading && <Loader>Loading model... {(loading.progress * 100).toFixed(2)}%</Loader>}
       <div className="header">
-        <h1>📷 Heinz Live Detection App</h1>
+        <h1>📷 {title} Live Detection App</h1>
         <p>
-        Heinz live detection application on browser powered by <code>tensorflow.js</code>
+        Model powered by <code>repzo.com</code>
         </p>
         <p>
           Serving : <code className="code">{modelName}</code>
@@ -73,19 +78,19 @@ const App = () => {
         <img
           src="#"
           ref={imageRef}
-          onLoad={() => detect(imageRef.current, model, canvasRef.current)}
+          onLoad={() => detect(imageRef.current, model, canvasRef.current,labels)}
         />
         <video
           autoPlay
           muted
           ref={cameraRef}
-          onPlay={() => detectVideo(cameraRef.current, model, canvasRef.current)}
+          onPlay={() => detectVideo(cameraRef.current, model, canvasRef.current,labels)}
         />
         <video
           autoPlay
           muted
           ref={videoRef}
-          onPlay={() => detectVideo(videoRef.current, model, canvasRef.current)}
+          onPlay={() => detectVideo(videoRef.current, model, canvasRef.current,labels)}
         />
         <canvas width={model.inputShape[1]} height={model.inputShape[2]} ref={canvasRef} />
       </div>
