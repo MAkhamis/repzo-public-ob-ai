@@ -83,7 +83,7 @@ export const detect = async (source, model, canvasRef,labels, callback = () => {
     boxes,
     scores,
     500,
-    0.35,
+    0.45,
     0.2
   ); // NMS to filter boxes
 

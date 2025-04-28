@@ -72,9 +72,9 @@ const App = ({
         <p>
         Model powered by <code>repzo.com</code>
         </p>
-        <p>
+        {/* <p>
           Serving : <code className="code">{modelName}</code>
-        </p>
+        </p> */}
       </div>
 
       <div className="content">

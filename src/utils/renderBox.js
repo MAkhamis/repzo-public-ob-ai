@@ -58,7 +58,8 @@ export const renderBoxes = (
 
     // Draw the label background.
     ctx.fillStyle = color;
-    const textWidth = ctx.measureText(klass + " - " + score + "%").width;
+    // const textWidth = ctx.measureText(klass + " - " + score + "%").width;
+    const textWidth = ctx.measureText(klass ).width;
     const textHeight = parseInt(font, 10); // base 10
     const yText = y1 - (textHeight + ctx.lineWidth);
     ctx.fillRect(
@@ -70,7 +71,8 @@ export const renderBoxes = (
 
     // Draw labels
     ctx.fillStyle = "#ffffff";
-    ctx.fillText(klass + " - " + score + "%", x1 - 1, yText < 0 ? 0 : yText);
+    ctx.fillText(klass , x1 - 1, yText < 0 ? 0 : yText);
+    // ctx.fillText(klass + " - " + score + "%", x1 - 1, yText < 0 ? 0 : yText);
   }
 };
 
