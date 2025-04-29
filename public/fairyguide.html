@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Labeling Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .item {
+      width: calc(25% - 20px); /* 4 per row */
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    .item img {
+      width: 100%;
+      height: auto;
+      max-height: 200px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .sku, .name {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+    .sku {
+      font-weight: bold;
+      color: #333;
+    }
+    .code {
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>AI Labeling Guide</h1>
+  <div class="gallery" id="gallery"></div>
+
+  <script>
+    const  products = [
+  { name: "FAIRY ORIGINAL BO 16X650ML IL", modifiedName: "ORIGINAL BO 16X650ML IL", sku: "PG 028-023", category: "Dish Care", code: "2" },
+  { name: "FAIRY HDW AVERA&CUCUM 16X515ML IL", modifiedName: "HDW AVERA&CUCUM 16X515ML IL", sku: "PG 028-027", category: "Dish Care", code: "3" },
+  { name: "FAIRY HDW ROSE&SATIN 16X515ML IL", modifiedName: "HDW ROSE&SATIN 16X515ML IL", sku: "PG 028-028", category: "Dish Care", code: "4" },
+  { name: "FAIRY HDW PLAT ORG 16X515ML IL", modifiedName: "HDW PLAT ORG 16X515ML IL", sku: "PG 028-031", category: "Dish Care", code: "5" },
+  { name: "FAIRY HDW PLAT LMN 16X515ML IL", modifiedName: "HDW PLAT LMN 16X515ML IL", sku: "PG 028-032", category: "Dish Care", code: "6" },
+  { name: "Fairy HDW Ultra LMN 8X900ML", modifiedName: "HDW Ultra LMN 8X900ML", sku: "PG 028-036", category: "Dish Care", code: "7" },
+  { name: "Fairy HDW Ultra ORG 8X900ML", modifiedName: "HDW Ultra ORG 8X900ML", sku: "PG 028-037", category: "Dish Care", code: "8" },
+  { name: "FAIRY HDW Original 9X1190ML", modifiedName: "HDW Original 9X1190ML", sku: "PG 028-051", category: "Dish Care", code: "9" },
+  { name: "FAIRY HDW Lemon 9X1190ML", modifiedName: "HDW Lemon 9X1190ML", sku: "PG 028-052", category: "Dish Care", code: "0" },
+  { name: "FAIRY HDW LMN 8X650ML MAXPWR", modifiedName: "HDW LMN 8X650ML MAXPWR", sku: "PG 028-053", category: "Dish Care", code: "q" },
+  { name: "FAIRY HDW ORG 8X650ML MAXPWR", modifiedName: "HDW ORG 8X650ML MAXPWR", sku: "PG 028-054", category: "Dish Care", code: "w" },
+  { name: "Fairy Lemon 16X650 ML", modifiedName: "Lemon 16X650 ML", sku: "PG 028-113", category: "Dish Care", code: "e" },
+  { name: "FAIRY ADW AIO YELLOW 4X48CT CEE GG", modifiedName: "ADW AIO YELLOW 4X48CT CEE GG", sku: "PG 028-114", category: "Dish Care", code: "t" },
+  { name: "FAIRY ADW PLAT YELLOW 4X37CT CON EU RV2", modifiedName: "ADW PLAT YELLOW 4X37CT CON EU RV2", sku: "PG 028-115", category: "Dish Care", code: "a" },
+  { name: "Fairy ADW AIO 5X41CT", modifiedName: "ADW AIO 5X41CT", sku: "PG 028-118", category: "Dish Care", code: "s" },
+  { name: "Fairy ADW PLAT 5X39CT", modifiedName: "ADW PLAT 5X39CT", sku: "PG 028-119", category: "Dish Care", code: "d" },
+  { name: "FAIRY ADW AIO 4X71CT", modifiedName: "ADW AIO 4X71CT", sku: "PG 028-121", category: "Dish Care", code: "f" },
+  { name: "FAIRY ADW PLAT 4X66CT", modifiedName: "ADW PLAT 4X66CT", sku: "PG 028-122", category: "Dish Care", code: "g" },
+];
+;
+
+    const gallery = document.getElementById('gallery');
+
+    products.forEach(product => {
+      const item = document.createElement('div');
+      item.className = 'item';
+
+      const img = document.createElement('img');
+      img.src = `fairyimages/${product.sku}.jpg`;
+      img.alt = product.modifiedName;
+
+      const name = document.createElement('div');
+      name.className = 'name';
+      name.textContent = product.modifiedName;
+
+      const sku = document.createElement('div');
+      sku.className = 'sku';
+      sku.textContent = product.sku;
+      const code = document.createElement('div');
+      code.className = 'code';
+      code.textContent = product.code;
+
+      item.appendChild(img);
+      item.appendChild(name);
+      item.appendChild(sku);
+      item.appendChild(code);
+
+      gallery.appendChild(item);
+    });
+  </script>
+
+</body>
+</html>
