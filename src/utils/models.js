@@ -7,10 +7,16 @@ export const models_data = {
       "labels": ["french's mustard"]
     },
     {
-      "labels":["Inverted Bottle", "Standard Bottle"],
+      "labels": ["Inverted Bottle", "Standard Bottle"],
       "title": "Hienz's ketchup",
       "modelFolder": "hienz",
       "modelName": "yolov11l",
+    },
+    {
+      "title": "Cleaning Supplies",
+      "modelFolder": "cleaningsupplies",
+      "modelName": "cleaningsupplies",
+      "labels": ['Bleache', 'Dishwashing Detergent', 'Kilogram Soap', 'Liquid Detergent', 'Matic Detergent', 'Paper towel', 'Pressed Soap', 'Softener', 'Wet Wipes'],
     }
   ]
 }
